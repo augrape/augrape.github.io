@@ -5,13 +5,16 @@
   
 
   
-  <title>Hexo</title>
+  <title>es2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="记录一次aws ES2安装的ss的故障12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;relea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es2">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;es2&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录一次aws ES2安装的ss的故障12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;relea">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-20T17:52:01.127Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -59,9 +62,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-es2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-es2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/21/es2/" class="article-date">
   <time datetime="2019-11-20T17:51:13.000Z" itemprop="datePublished">2019-11-21</time>
@@ -74,8 +75,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/es2/">es2</a>
+    <h1 class="article-title" itemprop="name">
+      es2
     </h1>
   
 
@@ -94,126 +95,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-git-checkout-b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/18/git-checkout-b/" class="article-date">
-  <time datetime="2019-11-18T15:41:16.000Z" itemprop="datePublished">2019-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/18/git-checkout-b/">git_checkout_b</a>
-    </h1>
+    <a href="/2019/11/18/git-checkout-b/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git_checkout_b</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="解决多次提交合并问题"><a href="#解决多次提交合并问题" class="headerlink" title="解决多次提交合并问题"></a>解决多次提交合并问题</h3><p>目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；<br>简单方案，<em>开发-发布</em>分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。<br>具体操作流程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换主分支</span></span><br><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从上游主版本更新代码到最新</span></span><br><span class="line">$ git pull upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个发布分支</span></span><br><span class="line">$ git checkout -b release_branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用带`no-commit&amp;squash`参数的方式将开发分支的代码合并过来</span></span><br><span class="line"><span class="comment"># 仿佛你在开发分支上一次型完美写完了所有代码</span></span><br><span class="line">$ git merge origin/working_branch --no-commit --squash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加commit信息 提交 OK!</span></span><br><span class="line">$ git commit -m<span class="string">"the work is done and ready for release"</span></span><br></pre></td></tr></table></figure>
-
-<p>如果没通过code review，这时候请打ta。<br>经过多次修改后，就需要关闭本次PR，从新这样操作后开辟新的PR来提交。PS: 在不考虑code review过程中，产生有价值的讨论信息在PR中。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/18/git-checkout-b/" data-id="ck37laz6c00026w9kh6v9fpg7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-SimHash" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/18/SimHash/" class="article-date">
-  <time datetime="2019-11-18T04:23:31.000Z" itemprop="datePublished">2019-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/18/SimHash/">SimHash</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="海量数据去重之SimHash算法-➡-原文"><a href="#海量数据去重之SimHash算法-➡-原文" class="headerlink" title="海量数据去重之SimHash算法 ➡ 原文"></a>海量数据去重之SimHash算法 ➡ <a href="http://blog.csdn.net/u010454030/article/details/49102565" target="_blank" rel="noopener">原文</a></h1><h3 id="SimHash"><a href="#SimHash" class="headerlink" title="SimHash"></a>SimHash</h3><p>她是Google在两千零七年发表的论文《Detecting Near-Duplicates for Web Crawling》中提到的一种指纹生成算法又或者叫指纹提取算法，被Google广泛应用于亿级的网页去重job，其主要思想就是降维，什么是降维呢！简单来说就是“通过多条信息确定一件事，变成一条信息确定一件事”，Simhash算法就能来做这件事儿!</p>
-<p>SimHash算法流程图⬇<br><img src="http://img-blog.csdn.net/20151013190234271?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="logo"></p>
-<h3 id="海明距离"><a href="#海明距离" class="headerlink" title="海明距离"></a>海明距离</h3><h3 id="鸽巢原理"><a href="#鸽巢原理" class="headerlink" title="鸽巢原理"></a>鸽巢原理</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/18/SimHash/" data-id="ck37laz6400006w9kf62g757r" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-我决定写自我成长" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/03/%E6%88%91%E5%86%B3%E5%AE%9A%E5%86%99%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/" class="article-date">
-  <time datetime="2019-11-02T18:37:57.164Z" itemprop="datePublished">2019-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/03/%E6%88%91%E5%86%B3%E5%AE%9A%E5%86%99%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">我决定写自我成长</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>你好，写给未来的自己，现在下定决心把自我学习、工作以及其他等等遇到的问题做总结。希望可以共勉。首先呢，因为啥我要写这博客？这段时间对我打击很大，找工作不顺利自我认识不全面总总原因总之就是以往过的太顺。我对未来“前途一片光明”，知道这些就够了。<strong>加油</strong>⛽️</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/03/%E6%88%91%E5%86%B3%E5%AE%9A%E5%86%99%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/" data-id="ck37laz6d00036w9k2ylnaxua" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         

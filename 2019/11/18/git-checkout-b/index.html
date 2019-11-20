@@ -2,119 +2,207 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>git_checkout_b | xpfeiup</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/app.css">
-  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
   
+
+  
+  <title>git_checkout_b | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="解决多次提交合并问题目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；简单方案，开发-发布分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。具体操作流程： 123456789101112131415# 切换主分支$ git checkout master# 从上游主版本更新代码到最新$ gi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git_checkout_b">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;18&#x2F;git-checkout-b&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="解决多次提交合并问题目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；简单方案，开发-发布分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。具体操作流程： 123456789101112131415# 切换主分支$ git checkout master# 从上游主版本更新代码到最新$ gi">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-18T15:43:17.588Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <nav class="app-nav">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git-checkout-b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/18/git-checkout-b/" class="article-date">
+  <time datetime="2019-11-18T15:41:16.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    
-      <a href="/.">home</a>
-    
+    <h1 class="article-title" itemprop="name">
+      git_checkout_b
+    </h1>
   
-    
-      <a href="/archives">archive</a>
-    
-  
-    
-      <a href="/atom.xml">rss</a>
-    
-  
-</nav>
 
-  <main class="post">
-  <article>
-  <h1 class="article-title">
-    <a href="/2019/11/18/git-checkout-b/">git_checkout_b</a>
-  </h1>
-
-  <section class="article-meta">
-    <p class="article-date">November 18 2019</p>
-  </section>
-
-  <section class="article-entry">
-    <h3 id="解决多次提交合并问题"><a href="#解决多次提交合并问题" class="headerlink" title="解决多次提交合并问题"></a>解决多次提交合并问题</h3><p>目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；<br>简单方案，<em>开发-发布</em>分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。<br>具体操作流程：</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="解决多次提交合并问题"><a href="#解决多次提交合并问题" class="headerlink" title="解决多次提交合并问题"></a>解决多次提交合并问题</h3><p>目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；<br>简单方案，<em>开发-发布</em>分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。<br>具体操作流程：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换主分支</span></span><br><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从上游主版本更新代码到最新</span></span><br><span class="line">$ git pull upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个发布分支</span></span><br><span class="line">$ git checkout -b release_branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用带`no-commit&amp;squash`参数的方式将开发分支的代码合并过来</span></span><br><span class="line"><span class="comment"># 仿佛你在开发分支上一次型完美写完了所有代码</span></span><br><span class="line">$ git merge origin/working_branch --no-commit --squash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加commit信息 提交 OK!</span></span><br><span class="line">$ git commit -m<span class="string">"the work is done and ready for release"</span></span><br></pre></td></tr></table></figure>
 
 <p>如果没通过code review，这时候请打ta。<br>经过多次修改后，就需要关闭本次PR，从新这样操作后开辟新的PR来提交。PS: 在不考虑code review过程中，产生有价值的讨论信息在PR中。</p>
 
-  </section>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/18/git-checkout-b/" data-id="ck37laz6c00026w9kh6v9fpg7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/21/es2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          es2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/18/SimHash/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SimHash</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-  <div class="sharing grid">
-  <section class="profile grid-item grid">
-    <img class="avatar" src="/images/avatar.png" alt="avatar" />
-    <div class="grid-item">
-      <p class="title"> xpfeiup </p>
-      <p class="subtitle"> Practice to know the truth </p>
-    <div>
-  </section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
 
-  <section class="share-btns">
-    <!-- <p> share it if you like it~ </p> -->
-    <a
-  class="twitter-share-button"
-  data-size="large"
-  data-via="DrakeLeung"
-  href="https://twitter.com/intent/tweet?text= id="解决多次提交合并问题"><a "
->
-  Tweet
-</a>
+  
+    
 
-<script>
-  window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  js.async = true;
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));
-</script>
-
-  </section>
-</div>
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
 
 
   
     
-<section class="article-comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/21/es2/">es2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/18/git-checkout-b/">git_checkout_b</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/18/SimHash/">SimHash</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/03/%E6%88%91%E5%86%B3%E5%AE%9A%E5%86%99%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">我决定写自我成长</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</section>
-
-<script>
-  var disqus_shortname = 'drakeleung';
-  
-  var disqus_url = 'http://yoursite.com/2019/11/18/git-checkout-b/';
-  
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
 
   
-</main>
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>
