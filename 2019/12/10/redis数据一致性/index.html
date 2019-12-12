@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>redis数据一致性 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天的面试题；保证kv和db数据一致性；如何保证RabbitMQ消息99%的发送成功；RabbitMQ的高可用实现； 基于主从下才谈高可用，她有3种模式：单机、普通集群、镜像集群模式 分别说明。   单机模式   自己玩，生产不会用到；   普通集群模式   多台机器启动多个RabbitMQ实例，每台机器启动一个。但是你创建的Queue，只存放在一个RabbitMQ实例上，其他实例都同步Queue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis数据一致性">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天的面试题；保证kv和db数据一致性；如何保证RabbitMQ消息99%的发送成功；RabbitMQ的高可用实现； 基于主从下才谈高可用，她有3种模式：单机、普通集群、镜像集群模式 分别说明。   单机模式   自己玩，生产不会用到；   普通集群模式   多台机器启动多个RabbitMQ实例，每台机器启动一个。但是你创建的Queue，只存放在一个RabbitMQ实例上，其他实例都同步Queue">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-12T17:33:51.101Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-redis数据一致性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/10/redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/" class="article-date">
+  <time datetime="2019-12-10T08:44:33.000Z" itemprop="datePublished">2019-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis数据一致性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="今天的面试题；"><a href="#今天的面试题；" class="headerlink" title="今天的面试题；"></a>今天的面试题；</h3><h4 id="保证kv和db数据一致性；"><a href="#保证kv和db数据一致性；" class="headerlink" title="保证kv和db数据一致性；"></a>保证kv和db数据一致性；</h4><h4 id="如何保证RabbitMQ消息99-的发送成功；"><a href="#如何保证RabbitMQ消息99-的发送成功；" class="headerlink" title="如何保证RabbitMQ消息99%的发送成功；"></a>如何保证<em>RabbitMQ</em>消息99%的发送成功；</h4><h4 id="RabbitMQ的高可用实现；"><a href="#RabbitMQ的高可用实现；" class="headerlink" title="RabbitMQ的高可用实现；"></a><em>RabbitMQ</em>的高可用实现；</h4><blockquote>
+<p>基于主从下才谈高可用，她有3种模式：单机、普通集群、镜像集群模式 分别说明。</p>
+</blockquote>
+<ol>
+<li>单机模式</li>
+</ol>
+<blockquote>
+<p>自己玩，生产不会用到；</p>
+</blockquote>
+<ol start="2">
+<li>普通集群模式</li>
+</ol>
+<blockquote>
+<p>多台机器启动多个RabbitMQ实例，每台机器启动一个。但是你创建的Queue，只存放在一个RabbitMQ实例上，其他实例都同步Queue的元数据，紧接着你消费的时候，若你连接到另外一个实例上，那么被连接的实例会从Queue所在的实例上拉取数据过来。</p>
+</blockquote>
+<blockquote>
+<p>这种方式怎么想都感觉不理想，没做到真正的分布式。导致你每次随机连接一个额实例然后拉取数据，要么固定连接Queue所在的实例消费数据，前者有数据拉取的开销，后者有单实例的瓶颈，都不妥。若存放Queue的实例宕机，其他实例想来拉取数据也是不可能的。</p>
+</blockquote>
+<blockquote>
+<p>选择开启持久化，让数据落盘，消息丢不了，但也得等实例恢复才能继续从Queue中拉数据。就没有所谓高可用性了；</p>
+</blockquote>
+<ol start="3">
+<li>镜像集群模式</li>
+</ol>
+<blockquote>
+<p>你创建的Queue，无论是元数据还是Queue里的消息都会存在于多个实例上，然后每次你写消息到Queue的时候，都会自动把消息发送到多个实例的Queue中进行消息同步。</p>
+</blockquote>
+<blockquote>
+<p>好处就是任何实例宕机，影响不大依然可用。坏处是开销大，消息同步所有机器，导致网络带宽压力和消耗严重！其次没有扩展性可言；若某个Queue负载很重，加机器也会包含这个Queue所有数据，并没有办法线性扩展你的Queue；</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/10/redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/" data-id="ck430dl990004dl9k6wwpf019" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/12/Scrapy-request-fingerprint/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Scrapy request_fingerprint
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/21/es2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">es2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/12/Scrapy-request-fingerprint/">Scrapy request_fingerprint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/">redis数据一致性</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/21/es2/">es2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/18/git-checkout-b/">git_checkout_b</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/18/SimHash/">SimHash</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
