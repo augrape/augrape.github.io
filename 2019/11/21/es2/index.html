@@ -5,19 +5,19 @@
   
 
   
-  <title>es2 | Hexo</title>
+  <title>es2 | Just Write.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一次aws ES2安装的ss的故障12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;relea">
+  <meta name="description" content="记录一次aws ES2安装的ss的故障 12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;rele">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es2">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;es2&#x2F;index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="记录一次aws ES2安装的ss的故障12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;relea">
+<meta property="og:site_name" content="Just Write.">
+<meta property="og:description" content="记录一次aws ES2安装的ss的故障 12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;rele">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-11-20T17:52:01.127Z">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Just Write." type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -36,7 +36,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Just Write.</a>
       </h1>
       
     </div>
@@ -84,12 +84,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="记录一次aws-ES2安装的ss的故障"><a href="#记录一次aws-ES2安装的ss的故障" class="headerlink" title="记录一次aws ES2安装的ss的故障"></a>记录一次aws ES2安装的ss的故障</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 最开始是没有gcc, 行我安装</span></span><br><span class="line"><span class="meta">$</span><span class="bash">  yum -y install gcc gcc-c++ gdb</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后来有安装个</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum -y groupinstall <span class="string">"Development Tools"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar xf LATEST.tar.gz <span class="comment"># 解压</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure &amp;&amp; make -j4 &amp;&amp; make install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> /usr/<span class="built_in">local</span>/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ldconfig  <span class="comment"># 加载配置</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开始安装python</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget --no-check-certificate https://pypi.python.org/packages/<span class="built_in">source</span>/s/setuptools/setuptools-12.0.3.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> setuptools-12.0.3 &amp;&amp; python setup.py install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum install zlib zlib-devel</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make clean  <span class="comment"># 也是一个好命令</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 就为了执行这最后一个命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d start</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d stop</span></span><br></pre></td></tr></table></figure>
+        <h3>记录一次aws ES2安装的ss的故障</h3>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 最开始是没有gcc, 行我安装</span></span><br><span class="line"><span class="meta">$</span><span class="bash">  yum -y install gcc gcc-c++ gdb</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后来有安装个</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum -y groupinstall <span class="string">"Development Tools"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar xf LATEST.tar.gz <span class="comment"># 解压</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure &amp;&amp; make -j4 &amp;&amp; make install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> /usr/<span class="built_in">local</span>/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ldconfig  <span class="comment"># 加载配置</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开始安装python</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget --no-check-certificate https://pypi.python.org/packages/<span class="built_in">source</span>/s/setuptools/setuptools-12.0.3.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> setuptools-12.0.3 &amp;&amp; python setup.py install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum install zlib zlib-devel</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make clean  <span class="comment"># 也是一个好命令</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 就为了执行这最后一个命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d start</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d stop</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/es2/" data-id="ck432lqq30001as9k1v25c8vp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/es2/" data-id="ck498aciw0001129k31l6eybg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +179,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2019 Pengfeix<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
