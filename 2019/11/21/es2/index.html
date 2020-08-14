@@ -1,210 +1,222 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-  
-  <title>es2 | Just Write.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一次aws ES2安装的ss的故障 12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;rele">
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="es2"/>
+
+
+
+
+  <meta name="keywords" content="elasticsearch,安装服务," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Just Write.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/11/21/es2/"/>
+
+
+<meta name="description" content="记录一次aws ES2安装的ss的故障">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es2">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;es2&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/21/es2/index.html">
 <meta property="og:site_name" content="Just Write.">
-<meta property="og:description" content="记录一次aws ES2安装的ss的故障 12345678910111213141516171819# 最开始是没有gcc, 行我安装$  yum -y install gcc gcc-c++ gdb# 后来有安装个$ yum -y groupinstall &quot;Development Tools&quot;$ wget https:&#x2F;&#x2F;download.libsodium.org&#x2F;libsodium&#x2F;rele">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-20T17:52:01.127Z">
+<meta property="og:description" content="记录一次aws ES2安装的ss的故障">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-20T17:51:13.000Z">
+<meta property="article:modified_time" content="2020-08-14T03:40:05.362Z">
+<meta property="article:author" content="Pengfeix">
+<meta property="article:tag" content="elasticsearch">
+<meta property="article:tag" content="安装服务">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Just Write." type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Just Write.</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-es2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/21/es2/" class="article-date">
-  <time datetime="2019-11-20T17:51:13.000Z" itemprop="datePublished">2019-11-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
   
-    <h1 class="article-title" itemprop="name">
-      es2
+
+
+
+    <title> es2 - Just Write. </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Just Write.</a>
     </h1>
-  
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
 
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>记录一次aws ES2安装的ss的故障</h3>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 最开始是没有gcc, 行我安装</span></span><br><span class="line"><span class="meta">$</span><span class="bash">  yum -y install gcc gcc-c++ gdb</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后来有安装个</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum -y groupinstall <span class="string">"Development Tools"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar xf LATEST.tar.gz <span class="comment"># 解压</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure &amp;&amp; make -j4 &amp;&amp; make install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> /usr/<span class="built_in">local</span>/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ldconfig  <span class="comment"># 加载配置</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开始安装python</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget --no-check-certificate https://pypi.python.org/packages/<span class="built_in">source</span>/s/setuptools/setuptools-12.0.3.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> setuptools-12.0.3 &amp;&amp; python setup.py install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum install zlib zlib-devel</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make clean  <span class="comment"># 也是一个好命令</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 就为了执行这最后一个命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d start</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d stop</span></span><br></pre></td></tr></table></figure></p>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          es2
+        
+      </h1>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/es2/" data-id="ck498aciw0001129k31l6eybg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
+      <time class="post-time">
+          Nov 21 2019
+      </time>
+    </header>
+
+
+
     
-<nav id="article-nav">
-  
-    <a href="/2019/12/10/redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+            <div class="post-content">
+            <h3 id="记录一次aws-ES2安装的ss的故障"><a href="#记录一次aws-ES2安装的ss的故障" class="headerlink" title="记录一次aws ES2安装的ss的故障"></a>记录一次aws ES2安装的ss的故障</h3><a id="more"></a>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 最开始是没有gcc, 行我安装</span></span><br><span class="line"><span class="meta">$</span><span class="bash">  yum -y install gcc gcc-c++ gdb</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后来有安装个</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum -y groupinstall <span class="string">"Development Tools"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar xf LATEST.tar.gz <span class="comment"># 解压</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure &amp;&amp; make -j4 &amp;&amp; make install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> /usr/<span class="built_in">local</span>/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ldconfig  <span class="comment"># 加载配置</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开始安装python</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wget --no-check-certificate https://pypi.python.org/packages/<span class="built_in">source</span>/s/setuptools/setuptools-12.0.3.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> setuptools-12.0.3 &amp;&amp; python setup.py install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum install zlib zlib-devel</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make clean  <span class="comment"># 也是一个好命令</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 就为了执行这最后一个命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d start</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssserver -c /etc/shadowsocks.json -d stop</span></span><br></pre></td></tr></table></figure>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/elasticsearch/">elasticsearch</a>
+		  
+			<a href="/tags/%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1/">安装服务</a>
+		  
+		</div>
+		
+
         
-          redis数据一致性
         
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/12/10/redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">数据一致性</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/11/18/git-checkout-b/">
+        <span class="next-text nav-default">gitcheckoutb</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
       </div>
-    </a>
-  
-  
-    <a href="/2019/11/18/git-checkout-b/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git_checkout_b</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
+      <footer id="colophon"><span class="copyright-year">
     
-
-  
+        &copy;
     
-
-  
+        2014 -
     
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
-    </div>
-  </div>
+    2020
+    <span class="footer-author">Pengfeix.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
 
+      </footer>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/12/Scrapy-request-fingerprint/">Scrapy request_fingerprint</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/10/redis%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/">redis数据一致性</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/21/es2/">es2</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/18/git-checkout-b/">git_checkout_b</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/18/SimHash/">SimHash</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Pengfeix<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
+    
 
 
 
-  </div>
-</body>
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>
