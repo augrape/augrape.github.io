@@ -35,12 +35,12 @@
 <link rel="canonical" href="http://yoursite.com/2019/11/18/git-checkout-b/"/>
 
 
-<meta name="description" content="解决多次提交合并问题目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；">
+<meta name="description" content="解决多次提交合并问题 目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本； &lt;!--more--&gt; 简单方案，开发-发布分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。 具体操作流程： 123456789101112131415# 切换主分支$ git checkout mast">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitcheckoutb">
 <meta property="og:url" content="http://yoursite.com/2019/11/18/git-checkout-b/index.html">
 <meta property="og:site_name" content="Just Write.">
-<meta property="og:description" content="解决多次提交合并问题目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；">
+<meta property="og:description" content="解决多次提交合并问题 目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本； &lt;!--more--&gt; 简单方案，开发-发布分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。 具体操作流程： 123456789101112131415# 切换主分支$ git checkout mast">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-11-18T15:41:16.000Z">
 <meta property="article:modified_time" content="2020-08-14T03:41:39.507Z">
@@ -130,12 +130,14 @@
 
     
             <div class="post-content">
-            <h3 id="解决多次提交合并问题"><a href="#解决多次提交合并问题" class="headerlink" title="解决多次提交合并问题"></a>解决多次提交合并问题</h3><p>目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；</p>
-<a id="more"></a>
-<p>简单方案，<em>开发-发布</em>分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。<br>具体操作流程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换主分支</span></span><br><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从上游主版本更新代码到最新</span></span><br><span class="line">$ git pull upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个发布分支</span></span><br><span class="line">$ git checkout -b release_branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用带`no-commit&amp;squash`参数的方式将开发分支的代码合并过来</span></span><br><span class="line"><span class="comment"># 仿佛你在开发分支上一次型完美写完了所有代码</span></span><br><span class="line">$ git merge origin/working_branch --no-commit --squash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加commit信息 提交 OK!</span></span><br><span class="line">$ git commit -m<span class="string">"the work is done and ready for release"</span></span><br></pre></td></tr></table></figure>
-
-<p>如果没通过code review，这时候请打ta。<br>经过多次修改后，就需要关闭本次PR，从新这样操作后开辟新的PR来提交。PS: 在不考虑code review过程中，产生有价值的讨论信息在PR中。</p>
+            <h3>解决多次提交合并问题</h3>
+<p>目的就一个⛰️将这一个功能所有commit都合并为一条有意义的commit信息提交给主版本；
+&lt;!--more--&gt;
+简单方案，<em>开发-发布</em>分离的思想；开发使用一个分支，提交PR发布的时候直接开新分支，将开发分支的更新代码merge来即可；挂心上的是结果。
+具体操作流程：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换主分支</span></span><br><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从上游主版本更新代码到最新</span></span><br><span class="line">$ git pull upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个发布分支</span></span><br><span class="line">$ git checkout -b release_branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用带`no-commit&amp;squash`参数的方式将开发分支的代码合并过来</span></span><br><span class="line"><span class="comment"># 仿佛你在开发分支上一次型完美写完了所有代码</span></span><br><span class="line">$ git merge origin/working_branch --no-commit --squash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加commit信息 提交 OK!</span></span><br><span class="line">$ git commit -m<span class="string">"the work is done and ready for release"</span></span><br></pre></td></tr></table></figure></p>
+<p>如果没通过code review，这时候请打ta。
+经过多次修改后，就需要关闭本次PR，从新这样操作后开辟新的PR来提交。PS: 在不考虑code review过程中，产生有价值的讨论信息在PR中。</p>
 
             </div>
           
