@@ -30,18 +30,18 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2020/08/14/怎样起一个巧妙的标题呢/"/>
+<link rel="canonical" href="http://yoursite.com/2018/06/14/怎样起一个巧妙的标题呢/"/>
 
 
-<meta name="description" content="阵列、树和哈希 二维阵列是最简单的数据结构。一个表可以看作是个阵列， 虽然这个方法保存和视觉话数据很棒，但是当你要查找特定的值它就很糟糕。 会造成N次运算，虽然还行的，但是还有更快的方法呢 &lt;!--more--&gt; 树和数据库索引  二叉搜索树是带有特殊属性的二叉树，每个节点的关键字必须 ：  比保存在左子树的任何键值都要大 比保存在右子树的任何键值都要小    「 二叉查找树&#x2F;二叉搜索">
+<meta name="description" content="阵列、树和哈希 二维阵列是最简单的数据结构。一个表可以看作是个阵列， 虽然这个方法保存和视觉话数据很棒，但是当你要查找特定的值它就很糟糕。会造成N次运算，虽然还行的，但是还有更快的方法呢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="怎样起一个巧妙的标题呢">
-<meta property="og:url" content="http://yoursite.com/2020/08/14/%E6%80%8E%E6%A0%B7%E8%B5%B7%E4%B8%80%E4%B8%AA%E5%B7%A7%E5%A6%99%E7%9A%84%E6%A0%87%E9%A2%98%E5%91%A2/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/%E6%80%8E%E6%A0%B7%E8%B5%B7%E4%B8%80%E4%B8%AA%E5%B7%A7%E5%A6%99%E7%9A%84%E6%A0%87%E9%A2%98%E5%91%A2/index.html">
 <meta property="og:site_name" content="Just Write.">
-<meta property="og:description" content="阵列、树和哈希 二维阵列是最简单的数据结构。一个表可以看作是个阵列， 虽然这个方法保存和视觉话数据很棒，但是当你要查找特定的值它就很糟糕。 会造成N次运算，虽然还行的，但是还有更快的方法呢 &lt;!--more--&gt; 树和数据库索引  二叉搜索树是带有特殊属性的二叉树，每个节点的关键字必须 ：  比保存在左子树的任何键值都要大 比保存在右子树的任何键值都要小    「 二叉查找树&#x2F;二叉搜索">
+<meta property="og:description" content="阵列、树和哈希 二维阵列是最简单的数据结构。一个表可以看作是个阵列， 虽然这个方法保存和视觉话数据很棒，但是当你要查找特定的值它就很糟糕。会造成N次运算，虽然还行的，但是还有更快的方法呢">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-14T06:28:05.000Z">
-<meta property="article:modified_time" content="2020-08-14T10:12:14.574Z">
+<meta property="article:published_time" content="2018-06-14T06:28:05.000Z">
+<meta property="article:modified_time" content="2020-08-17T08:46:43.360Z">
 <meta property="article:author" content="Pengfeix">
 <meta name="twitter:card" content="summary">
 
@@ -119,7 +119,7 @@
       </h1>
 
       <time class="post-time">
-          Aug 14 2020
+          Jun 14 2018
       </time>
     </header>
 
@@ -129,43 +129,28 @@
             <div class="post-content">
             <p>阵列、树和哈希</p>
 <p>二维阵列是最简单的数据结构。一个表可以看作是个阵列，</p>
-<p>虽然这个方法保存和视觉话数据很棒，但是当你要查找特定的值它就很糟糕。
-会造成N次运算，虽然还行的，但是还有更快的方法呢
-&lt;!--more--&gt;
-树和数据库索引</p>
+<p>虽然这个方法保存和视觉话数据很棒，但是当你要查找特定的值它就很糟糕。<br>会造成N次运算，虽然还行的，但是还有更快的方法呢</p>
+<a id="more"></a>
+<p>树和数据库索引</p>
 <ul>
-<li>二叉搜索树是带有特殊属性的二叉树，每个节点的关键字必须 ：
-<ul>
+<li>二叉搜索树是带有特殊属性的二叉树，每个节点的关键字必须 ：<ul>
 <li>比保存在左子树的任何键值都要大</li>
 <li>比保存在右子树的任何键值都要小</li>
 </ul>
 </li>
 </ul>
-<p>「 二叉查找树/二叉搜索树，或称二叉排序树。」
-这回去查找某个特定的数据就是log(N)次运算了。这种想象的就是一个数据库索引。</p>
-<p>B+树索引
-以上内容查找一个特定值这个树确实好用，但当你查找两值之间的多个元素时，你的成本就是O(N)，
-因为你必须查找树的每一个结点，以判断它是否处于那2个值之间。而且这个操作不是磁盘I/O有利的，
-因为你必须读取整个树。我们需要找到高效的范围查询方法。为了解决这个问题，
-现代数据库使用了一种修订版的树，叫做B+树。</p>
+<p>「 二叉查找树/二叉搜索树，或称二叉排序树。」<br>这回去查找某个特定的数据就是log(N)次运算了。这种想象的就是一个数据库索引。</p>
+<p>B+树索引<br>以上内容查找一个特定值这个树确实好用，但当你查找两值之间的多个元素时，你的成本就是O(N)，<br>因为你必须查找树的每一个结点，以判断它是否处于那2个值之间。而且这个操作不是磁盘I/O有利的，<br>因为你必须读取整个树。我们需要找到高效的范围查询方法。为了解决这个问题，<br>现代数据库使用了一种修订版的树，叫做B+树。</p>
 <ul>
-<li>在一个B+树里：
-<ul>
+<li>在一个B+树里：<ul>
 <li>只有最底层的节点(叶子节点)才保存信息(相关表的行位置)</li>
 <li>其他节点只是在搜索中用来指引到正确节点的。</li>
 </ul>
 </li>
 </ul>
-<p>你可以看到，节点更多了（多了两倍）。
-确实，你有了额外的节点，它们就是帮助你找到正确节点的『决策节点』（正确节点保存着相关表中行的位置）。
-但是搜索复杂度还是在 O(log(N))（只多了一层）。
-一个重要的不同点是，最底层的节点是跟后续节点相连接的。</p>
-<p>我们最后一个重要的数据结构是哈希表。
-当你想快速查找值时，哈希表是非常有用的。
-而且，理解哈希表会帮助我们接下来理解一个数据库常见的联接操作，叫做『哈希联接』。
-这个数据结构也被数据库用来保存一些内部的东西（比如锁表或者缓冲池，我们在下文会研究这两个概念）。</p>
-<h1>如果有人问你数据库的原理，叫他看这篇文章</h1>
-
+<p>你可以看到，节点更多了（多了两倍）。<br>确实，你有了额外的节点，它们就是帮助你找到正确节点的『决策节点』（正确节点保存着相关表中行的位置）。<br>但是搜索复杂度还是在 O(log(N))（只多了一层）。<br>一个重要的不同点是，最底层的节点是跟后续节点相连接的。</p>
+<p>我们最后一个重要的数据结构是哈希表。<br>当你想快速查找值时，哈希表是非常有用的。<br>而且，理解哈希表会帮助我们接下来理解一个数据库常见的联接操作，叫做『哈希联接』。<br>这个数据结构也被数据库用来保存一些内部的东西（比如锁表或者缓冲池，我们在下文会研究这两个概念）。</p>
+<h1 id="如果有人问你数据库的原理，叫他看这篇文章"><a href="#如果有人问你数据库的原理，叫他看这篇文章" class="headerlink" title="如果有人问你数据库的原理，叫他看这篇文章"></a>如果有人问你数据库的原理，叫他看这篇文章</h1>
             </div>
           
 
@@ -177,15 +162,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2020/08/14/Kafka%E8%AE%BE%E8%AE%A1%E8%A7%A3%E6%9E%90%E7%AC%AC%E4%B8%80%E8%8A%82/">
+      <a class="prev" href="/2019/11/18/SimHash/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Kafka设计解析第一节</span>
+        <span class="prev-text nav-default">SimHash</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/2019/12/12/Scrapy%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BScheduler/">
-        <span class="next-text nav-default">Scrapy源码分析之Scheduler</span>
+      <a class="next" href="/2017/12/18/%E6%88%91%E5%86%B3%E5%AE%9A%E5%86%99%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">
+        <span class="next-text nav-default">我决定写自我成长</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
